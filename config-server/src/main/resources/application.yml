@@ -1,0 +1,17 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/svili365/spring-cloud-demo.git
+          searchPaths: config-lib
+  boot:
+    admin:
+      url: http://localhost:8080 #server端地址
+    sleuth:
+      sampler:
+        percentage: 0.05  #采样率
