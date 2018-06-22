@@ -1,16 +1,20 @@
 server:
   port: 9091
 spring:
+  application:
+    name: config-consumer
   cloud:
     config:
      uri: http://localhost:9090
      profile: dev
      label: master
-  application:
-    name: config-consumer
   boot:
     admin:
       url: http://localhost:8080 #server端地址
     sleuth:
       sampler:
         percentage: 0.05  #采样率
+
+management:
+  security:
+    enabled: false
