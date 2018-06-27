@@ -8,7 +8,7 @@ spring:
       server:
         git:
           uri: https://github.com/svili365/spring-cloud-demo.git
-          searchPaths: config-lib
+          search-paths: config-lib
   boot:
     admin:
       url: http://localhost:8080 #server端地址
