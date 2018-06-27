@@ -15,7 +15,7 @@
 		<groupId>com.littlenb</groupId>
 		<artifactId>cloud-demo-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/>
+		<relativePath>../cloud-demo-parent.xml</relativePath>
 	</parent>
 
 	<dependencies>
