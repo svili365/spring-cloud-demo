@@ -1,0 +1,11 @@
+spring:
+  boot:
+    admin:
+      url: http://localhost:8080 #server端地址
+      sleuth:
+        sampler:
+          percentage: 0.05  #采样率
+
+management:
+  security:
+    enabled: false
