@@ -13,10 +13,15 @@ public class ConfigConsumerApplicationTests {
 	@Value("${spring.datasource.driver-class-name}")
 	private String driverClassName;
 
+	@Value("${spring.boot.admin.url}")
+	private String adminUrl;
+
 	@Test
 	public void contextLoads() {
 		System.out.println("---test start---");
 		System.out.println(driverClassName);
+		System.out.println(adminUrl);
+
 		System.out.println("---test end---");
 	}
 
