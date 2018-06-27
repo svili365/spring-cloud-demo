@@ -2,3 +2,13 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
+  boot:
+    admin:
+      url: http://localhost:8080 #server端地址
+      sleuth:
+        sampler:
+          percentage: 0.05  #采样率
+
+management:
+  security:
+    enabled: false
