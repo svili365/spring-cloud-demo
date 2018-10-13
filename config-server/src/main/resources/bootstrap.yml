@@ -1,0 +1,24 @@
+server:
+  port: 8888 #不是8888端口,一定要在bootstrap配置文件中声名
+
+spring:
+  application:
+    name: configuration-server
+  profiles:
+    active: jdbc
+
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 5
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    prefer-ip-address: true
+    registry-fetch-interval-seconds: 5
+
+management:
+  endpoints:
+    web.exposure.include: '*' # 暴露所有endpoint的http接口
+  endpoint:
+    shutdown.enabled: true # 启动 shutdown endpoint，通过 POST 访问 actuator/shutdown 关闭本应用。
+    health.show-details: ALWAYS #health endpoint是否必须显示全部细节。默认情况下, /actuator/health 是公开的，并且不显示细节。

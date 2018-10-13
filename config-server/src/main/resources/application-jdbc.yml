@@ -1,0 +1,20 @@
+spring:
+  profiles: jdbc
+  cloud:
+    config:
+      server:
+        jdbc:
+          sql: select config_key ,config_value from config_repostory where app_name=? and app_profile=? and config_lable=?
+          order: 0
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/config_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+    username: yourname
+    password: password
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-test-query: select 1
+      connectionTimeout: 1000
+      idleTimeout: 30000
+      maxLifetime: 60000
+

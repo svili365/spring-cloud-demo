@@ -4,17 +4,17 @@
 
 + eureka 8761
 
-+ web-admin 8080
++ spring-admin 8762
 
-+ service-provider 8081
++ config-server 8888
 
-+ service-consumer 8082
++ gateway 8080
 
-+ config-server 9090
++ hello-service-provider 8081
 
-+ config-consumer 9091
++ spring-boot-demo 8082
+
 
 ### dependency
 
 see cloud-demo-parent.xml
-

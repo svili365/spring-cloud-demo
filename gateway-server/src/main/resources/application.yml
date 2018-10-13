@@ -1,0 +1,70 @@
+server:
+  port: 8080
+  tomcat:
+    min-spare-threads: 100 # 最小空闲线程数
+    max-connections: 512 # 并发处理的最大连接数
+    max-threads: 1024 # 最大线程数
+    accept-count: 1024 # 请求队列
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: gateway-server
+
+  cloud:        # spring cloud gateway 路由配置方式
+    gateway:
+      discovery:      #是否与服务发现组件进行结合，通过 serviceId(必须设置成大写) 转发到具体的服务实例。默认为false，设为true便开启通过服务中心的自动根据 serviceId 创建路由的功能。
+        locator:      #路由访问方式：http://Gateway_HOST:Gateway_PORT/大写的serviceId/**，其中微服务应用名默认大写访问。
+          enabled: true
+
+eureka:
+  client:
+    registry-fetch-interval-seconds: 5
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+
+feign:
+  hystrix:
+    enabled: true
+
+## actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: ALWAYS
+
+logging:
+  level:
+    org.springframework.cloud.gateway: trace
+    org.springframework.http.server.reactive: debug
+    org.springframework.web.reactive: debug
+    reactor.ipc.netty: debug
+
+info:
+  version: '@project.version@'
+
+---
+spring:
+  profiles: dev
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+... # "..."表示文档的结束
+
+---
+spring:
+  profiles: prod
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://ip:port/eureka/,http://ip:port/eureka/
+...

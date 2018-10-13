@@ -1,0 +1,35 @@
+server:
+  port: 9876
+spring:
+  profiles:
+    active: dev
+  application:
+    name: turbine-server
+turbine:
+  app-config: SPRING-BOOT-DEMO  # 定义所有要监控的微服务信息
+  cluster-name-expression: new String("default")  # 设置监控的表达式，通过此表达式表示要获取监控信息名称
+  combine-host-port: true
+## actuator 配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*' # 暴露所有endpoint的http接口
+  endpoint:
+    shutdown:
+      enabled: true # 启动 shutdown endpoint，通过 POST 访问 actuator/shutdown 关闭本应用。
+    health:
+      show-details: ALWAYS #health endpoint是否必须显示全部细节。默认情况下, /actuator/health 是公开的，并且不显示细节。
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
+    registry-fetch-interval-seconds: 5 #从eureka服务器注册表中获取注册信息的时间间隔
+  instance:
+    lease-renewal-interval-in-seconds: 5 #实例与注册中心的周期性心跳间隔，默认持续时间为30秒
+    health-check-url-path: /actuator/health
+    prefer-ip-address: true
+
+info:
+  version: '@project.version@'
